@@ -1,0 +1,15 @@
+System: 16O +144Sm
+Simulation range E from   55.000 MeV To   75.000 MeV, dE =    1.000 MeV
+Simulation range R from   7.0223 fm To  29.9723 fm, dR =    0.050 fm
+Potential parameters: V0=  105.100(MeV), a=    0.750(fm), r0=    1.100(fm), R=    8.537(fm)
+Coulomb barrier position : 10.8175 fm
+Coulomb barrier energy   : 61.2451 MeV
+Coulomb barrier curv     :  4.2509 MeV
+Coulomb bottom position  :  7.0223 fm
+Coulomb bottom energy    :    8.9425 MeV
+Phonon Excitation in the targ.: beta_N= 0.205, beta_C= 0.205, r0= 1.060 (fm),
+                              omega= 1.810 (MeV), Lambda=3, Nph=1
+ ------------------------------
+ Transfer coupled mode:
+ No transfer coupled mode
+ Nlevle =            2
