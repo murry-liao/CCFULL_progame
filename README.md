@@ -29,19 +29,17 @@ CCFull computes fusion cross sections as a function of incident energy for heavy
 
 
 ## Program Structure
-\begin{verbatim}
-ccfull/
-├── Makefile # Build configuration
-├── main.f90 # Main program
-├── initialization.f90 # Initialization module
-├── Interaction.f90 # Nuclear interaction potentials
-├── CoulombWave.f90 # Coulomb wave functions
-├── Numerov.f90 # Numerov integration method
-├── DiscreteBasis.f90 # Discrete basis
-├── ModifiedDiscreteBasis.f90 # Modified Discrete basis
-├── Rmatrix.f90 # R-matrix calculations
-└── README.md # This file
-\end{verbatim}
+- Makefile # Build configuration
+- main.f90 # Main program
+- initialization.f90 # Initialization module
+- Interaction.f90 # Nuclear interaction potentials
+- CoulombWave.f90 # Coulomb wave functions
+- Numerov.f90 # Numerov integration method
+- DiscreteBasis.f90 # Discrete basis
+- ModifiedDiscreteBasis.f90 # Modified Discrete basis
+- Rmatrix.f90 # R-matrix calculations
+- README.md # This file
+
 
 
 ## Usage
