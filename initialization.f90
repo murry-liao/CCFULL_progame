@@ -165,17 +165,18 @@ Contains
             "Simulation range R from ", R_min, " fm To ", R_max, " fm, dR = ", dr, " fm"
 
       print '(A, F8.3, A, F8.3, A, F8.3, A, F8.3, A)', &
-            "Potential parameters: V0= ", V0, "(MeV), a= ", A0, "(fm), r0= ", R0, "(fm), R= ", R0*(Apro**(1.0/3.0) + Atar**(1.0/3.0)), "(fm)"
+            "Potential parameters: V0= ", V0, "(MeV), a= ", A0, "(fm), r0= ", R0, "(fm), R= ",&
+             R0*(Apro**(1.0/3.0) + Atar**(1.0/3.0)), "(fm)"
 
-      print '(A, F8.4, A)', "Coulomb barrier position :", R_barrier, " fm"
+      print '(A, F8.4, A)', "Coulomb barrier position :", R_barrier, "fm"
 
-      print '(A, F8.4, A)', "Coulomb barrier energy   :", V_barrier, " MeV"
+      print '(A, F8.4, A)', "Coulomb barrier energy   :", V_barrier, "MeV"
 
-      print '(A, F8.4, A)', "Coulomb barrier curv     :", curv, " MeV"
+      print '(A, F8.4, A)', "Coulomb barrier curv     :", curv, "MeV"
 
-      print '(A, F8.4, A)', "Coulomb bottom position  :", R_bottom, " fm"
+      print '(A, F8.4, A)', "Coulomb bottom position  :", R_bottom, "fm"
 
-      print '(A, F10.4, A)', "Coulomb bottom energy    :", V_bottom, " MeV"
+      print '(A, F10.4, A)', "Coulomb bottom energy    :", V_bottom, "MeV"
 
       write(30,'(A, I0 ,A, A,I0 ,A)') 'System: ', Int(Apro), Element(Zpro),'+', Int(Atar), Element(Ztar)
 
@@ -186,24 +187,23 @@ Contains
             "Simulation range R from ", R_min, " fm To ", R_max, " fm, dR = ", dr, " fm"
 
       write(30,'(A, F8.3, A, F8.3, A, F8.3, A, F8.3, A)') &
-            "Potential parameters: V0= ", V0, "(MeV), a= ", A0, "(fm), r0= ", R0, "(fm), R= ", R0*(Apro**(1.0/3.0) + Atar**(1.0/3.0)), "(fm)"
+            "Potential parameters: V0= ", V0, "(MeV), a= ", A0, "(fm), r0= ", R0, "(fm), R= ",&
+             R0*(Apro**(1.0/3.0) + Atar**(1.0/3.0)), "(fm)"
 
-      write(30,'(A, F8.4, A)') "Coulomb barrier position :", R_barrier, " fm"
+      write(30,'(A, F8.4, A)') "Coulomb barrier position :", R_barrier, "fm"
 
-      write(30,'(A, F8.4, A)') "Coulomb barrier energy   :", V_barrier, " MeV"
+      write(30,'(A, F8.4, A)') "Coulomb barrier energy   :", V_barrier, "MeV"
 
-      write(30,'(A, F8.4, A)') "Coulomb barrier curv     :", curv, " MeV"
+      write(30,'(A, F8.4, A)') "Coulomb barrier curv     :", curv, "MeV"
 
-      write(30,'(A, F8.4, A)') "Coulomb bottom position  :", R_bottom, " fm"
+      write(30,'(A, F8.4, A)') "Coulomb bottom position  :", R_bottom, "fm"
 
-      write(30,'(A, F10.4, A)') "Coulomb bottom energy    :", V_bottom, " MeV"
-
-      print *, "------------------------------"
-      print *, "Mode of excitation for taget"
+      write(30,'(A, F10.4, A)') "Coulomb bottom energy    :", V_bottom, "MeV"
 
       if (Ntar /= 0) then
           if (IVIBROTT == 0) then
-              write(*,'(A, F6.3, A, F6.3, A, I0, A, I0)') "Phonon Excitation in the targ.: beta=", BetaT, ", omega=", OmegaT, " (MeV), Lambda=", LambdaT, ", Nph=", NphononT
+              write(*,'(A, F6.3, A, F6.3, A, I0, A, I0)') "Phonon Excitation in the targ.: beta=",&
+                         BetaT, ", omega=", OmegaT, " (MeV), Lambda=", LambdaT, ", Nph=", NphononT
               BetaTn = BetaT
               Write(*,*)' Different beta_N from beta_C for this mode(n/y)?'
               Read(*,*)ans
@@ -211,20 +211,27 @@ Contains
                 Write(*,*)'beta_N=?'
                 Read(*,*)BetaTn
               End If
-              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=", BetaTn, ", beta_C=", BetaT, ", r0=", R0T, " (fm),"
-              write(*,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT, " (MeV), Lambda=", LambdaT, ", Nph=", NphononT
-              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=", BetaTn, ", beta_C=", BetaT, ", r0=", R0T, " (fm),"
-              write(30,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT, " (MeV), Lambda=", LambdaT, ", Nph=", NphononT
+              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=",&
+                                                 BetaTn, ", beta_C=", BetaT, ", r0=", R0T, " (fm),"
+              write(*,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT, "&
+                                                 (MeV), Lambda=", LambdaT, ", Nph=", NphononT
+              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=",&
+                                                   BetaTn, ", beta_C=", BetaT, ", r0=", R0T, " (fm),"
+              write(30,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT, &
+                                                      " (MeV), Lambda=", LambdaT, ", Nph=", NphononT
           else if (IVIBROTT == 1) then
-              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the targ.: beta2=", Beta2T, ", beta4=", Beta4T, ", r0=", R0T, " (fm),"
+              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the targ.: beta2=", Beta2T, &
+                                                        ", beta4=", Beta4T, ", r0=", R0T, " (fm),"
               write(*,'(A, F6.3, A, I0)') "                                   E2=", E2T, " (MeV), Nrot=", NrotT
-              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the targ.: beta2=", Beta2T, ", beta4=", Beta4T, ", r0=", R0T, " (fm),"
+              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the targ.: beta2=", Beta2T,&
+                                                         ", beta4=", Beta4T, ", r0=", R0T, " (fm),"
               write(30,'(A, F6.3, A, I0)') "                                   E2=", E2T, " (MeV), Nrot=", NrotT
           end if
       end if
 
       if (NphononT2 /= 0) then
-          write(*,'(A, F6.3, A, F6.3, A, I0, A, I0)') "Phonon Excitation in the targ.: beta=", BetaT2, ", omega=", OmegaT2, " (MeV), Lambda=", LambdaT2, ", Nph=", NphononT2
+          write(*,'(A, F6.3, A, F6.3, A, I0, A, I0)') "Phonon Excitation in the targ.: beta=", BetaT2, ", omega=",&
+                                                         OmegaT2, " (MeV), Lambda=", LambdaT2, ", Nph=", NphononT2
           BetaT2n = BetaT2
           Write(*,*)' Different beta_N from beta_C for this mode(n/y)?'
           Read(*,*)ans
@@ -232,10 +239,14 @@ Contains
             Write(*,*)'beta_N=?'
             Read(*,*)BetaT2n
           End If
-          write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=", BetaT2n, ", beta_C=", BetaT2, ", r0=", R0T, " (fm),"
-          write(*,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT2, " (MeV), Lambda=", LambdaT2, ", Nph=", NphononT2
-          write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=", BetaT2n, ", beta_C=", BetaT2, ", r0=", R0T, " (fm),"
-          write(30,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT2, " (MeV), Lambda=", LambdaT2, ", Nph=", NphononT2
+          write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=", BetaT2n,&
+                                                     ", beta_C=", BetaT2, ", r0=", R0T, " (fm),"
+          write(*,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT2, " (MeV), Lambda=",&
+                                             LambdaT2, ", Nph=", NphononT2
+          write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the targ.: beta_N=", BetaT2n,&
+                                                     ", beta_C=", BetaT2, ", r0=", R0T, " (fm),"
+          write(30,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaT2, " (MeV), Lambda=",&
+                                               LambdaT2, ", Nph=", NphononT2
           Call Mutual
       End if
 
@@ -244,7 +255,8 @@ Contains
 
       if (Npro /= 0) then
           if (IVIBROTP == 0) then
-              write(*,'(A, F6.3, A, F6.3, A, I0, A, I0)') "Phonon Excitation in the proj.: beta=", BetaP, ", omega=", OmegaP, " (MeV), Lambda=", LambdaP, ", Nph=", NphononP
+              write(*,'(A, F6.3, A, F6.3, A, I0, A, I0)') "Phonon Excitation in the proj.: beta=", BetaP, ", omega=",&
+                                                           OmegaP, " (MeV), Lambda=", LambdaP, ", Nph=", NphononP
               BetaPn = BetaP
               Write(*,*)' Different beta_N from beta_C for this mode(n/y)?'
               Read(*,*)ans
@@ -252,14 +264,20 @@ Contains
                 Write(*,*)'beta_N=?'
                 Read(*,*)BetaPn
               End If
-              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the proj.: beta_N=", BetaPn, ", beta_C=", BetaP, ", r0=", R0P, " (fm),"
-              write(*,'(A, F6.3, A, F6.3, A, I0)') "                              omega=", OmegaP, " (MeV), Lambda=", LambdaP, ", Nph=", NphononP
-              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the proj.: beta_N=", BetaPn, ", beta_C=", BetaP, ", r0=", R0P, " (fm),"
-              write(30,'(A, F6.3, A, F6.3, A, I0)') "                              omega=", OmegaP, " (MeV), Lambda=", LambdaP, ", Nph=", NphononP
+              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the proj.: beta_N=", BetaPn, ", beta_C=",&
+                                                         BetaP, ", r0=", R0P, " (fm),"
+              write(*,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaP, " (MeV), Lambda=",&
+                                                                                       LambdaP, ", Nph=", NphononP
+              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Phonon Excitation in the proj.: beta_N=", BetaPn,&
+                                                         ", beta_C=", BetaP, ", r0=", R0P, " (fm),"
+              write(30,'(A, F6.3, A, I0, A, I0)') "                              omega=", OmegaP, " (MeV), Lambda=",&
+                                                   LambdaP, ", Nph=", NphononP
           else if (IVIBROTP == 1) then
-              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the proj.: beta2=", Beta2P, ", beta4=", Beta4P, ", r0=", R0P, " (fm),"
+              write(*,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the proj.: beta2=", Beta2P,&
+                                                         ", beta4=", Beta4P, ", r0=", R0P, " (fm),"
               write(*,'(A, F6.3, A, I0)') "                                   E2=", E2P, " (MeV), Nrot=", NrotP
-              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the proj.: beta2=", Beta2P, ", beta4=", Beta4P, ", r0=", R0P, " (fm),"
+              write(30,'(A, F6.3, A, F6.3, A, F6.3, A)') "Rotational Excitation in the proj.: beta2=", Beta2P,&
+                                                         ", beta4=", Beta4P, ", r0=", R0P, " (fm),"
               write(30,'(A, F6.3, A, I0)') "                                   E2=", E2P, " (MeV), Nrot=", NrotP
           end if
       end if
@@ -267,21 +285,13 @@ Contains
       Call grotation
 
       print *, "------------------------------"
-      print *, "Transfer coupled mode:"
-      Write(30,*)"------------------------------"
-      Write(30,*)"Transfer coupled mode:"
-      If (Ntrans == 0)then
-        Write(*,*)'No transfer coupled mode'
-        Write(30,*)'No transfer coupled mode'
-      End if 
+      print *, "Transfer coupled mode"
 
       if (Ntrans /= 0) then
           write(*,'(A, F6.3, A, F6.3, A)') "Transfer channel: Strength= ", Ftr, ", Q = ", Qtrans, " MeV"
           write(30,'(A, F6.3, A, F6.3, A)') "Transfer channel: Strength= ", Ftr, ", Q = ", Qtrans, " MeV"
       end if
       print *, "------------------------------"
-      Write(*,*)'Nlevle = ', Nlevel
-      Write(30,*)'Nlevle = ', Nlevel
   End Subroutine Output_information
 
 

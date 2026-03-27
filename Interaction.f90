@@ -883,7 +883,8 @@ Subroutine Anharmonicity()
           If (it > jt)Cycle
           If ((it == 0 .And. jt <= 1)) Cycle
           Write(*, *) ' '
-          Write(*, '(A,I2,2A,I2,A,I2,2A,I2,A)') 'Transition from the', LambdaT, sign, '^', it, ' to the', LambdaT, sign, '^', jt, 'state:'
+          Write(*, '(A,I2,2A,I2,A,I2,2A,I2,A)') 'Transition from the', LambdaT, sign, '^', it,&
+                                                 ' to the', LambdaT, sign, '^', jt, 'state:'
           Write(*, '(A,2G15.5)') '   beta_N and beta_C in the HO limit=', betnahv(it, jt), betcahv(it, jt)
           Write(*, '(2A)') '    Modify these beta_N a/o beta_C (n/y)?'
           Read(*, '(A1)') ans
@@ -940,7 +941,8 @@ Subroutine Anharmonicity()
           If (it > jt)Cycle
           If ((it == 0 .And. jt <= 1)) Cycle
           Write(*, *) ' '
-          Write(*, '(A,I2,2A,I2,A,I2,2A,I2,A)') 'Transition from the', LambdaT2, sign, '^', it, ' to the', LambdaT2, sign, '^', jt, 'state:'
+          Write(*, '(A,I2,2A,I2,A,I2,2A,I2,A)') 'Transition from the', LambdaT2, sign, '^', it,&
+                                                   ' to the', LambdaT2, sign, '^', jt, 'state:'
           Write(*, '(A,2G15.5)') '   beta_N and beta_C in the HO limit=', betnahv2(it, jt), betcahv2(it, jt)
           Write(*, '(2A)') '    Modify these beta_N a/o beta_C (n/y)?'
           Read(*, '(A1)') ans
@@ -996,7 +998,8 @@ Subroutine Anharmonicity()
             If (it > jt)Cycle
             If ((it == 0 .And. jt <= 1)) Cycle
             Write(*, *) ' '
-            Write(*, '(A,I2,2A,I2,A,I2,2A,I2,A)') 'Transition from the', LambdaP, sign, '^', it, ' to the', LambdaP, sign, '^', jt, 'state:'
+            Write(*, '(A,I2,2A,I2,A,I2,2A,I2,A)') 'Transition from the', LambdaP, sign, '^', it,&
+                                                     ' to the', LambdaP, sign, '^', jt, 'state:'
             Write(*, '(A,2G15.5)') '   beta_N and beta_C in the HO limit=', betnahvp(it, jt), betcahvp(it, jt)
             Write(*, '(2A)') '    Modify these beta_N a/o beta_C (n/y)?'
             Read(*, '(A1)') ans
@@ -1269,7 +1272,8 @@ Subroutine coupled_matrix(r, cpot_matrix)
   If (Ntrans == 1) Then
       cpot_matrix(1, Nlevel) = Ftrans(r)
       cpot_matrix(Nlevel, 1) = Ftrans(r)
-      cpot_matrix(Nlevel, Nlevel) = cpot_matrix(1, 1) - Qtrans + (Zpro + iq) * (Ztar - iq) / r * Hbar / 137.0 - Zpro * Ztar / r * Hbar / 137.0
+      cpot_matrix(Nlevel, Nlevel) = cpot_matrix(1, 1) - Qtrans + (Zpro + iq) * (Ztar - iq)&
+                                 / r * Hbar / 137.0 - Zpro * Ztar / r * Hbar / 137.0
   End If
 
   Return
