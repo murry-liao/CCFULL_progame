@@ -11,7 +11,7 @@ A Fortran program for calculating fusion cross sections using various nuclear re
 
 CCFull computes fusion cross sections as a function of incident energy for heavy-ion nuclear reactions. The program implements five different theoretical approaches:
 
-1. **Modified Numerov (Direct) Calculation** 
+1. **Modified Numerov Calculation** 
 2. **Discrete basis Method (DBM)**
 3. **Modified Discrete basis Method (MDBM)** 
 4. **R-matrix Theory** 
