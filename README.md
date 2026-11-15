@@ -1,7 +1,7 @@
 # CCFULL_progame
 CCFull computes fusion cross sections as a function of incident energy for heavy-ion nuclear reactions. The program implements five different theoretical approaches.
 
-If you just like to use CCFULL model with the Numerov method (the quickest method), you can find it in https://murry-liao.github.io/file_code/CCFULL/
+If you just like to use CCFULL model with the Modified Numerov method (the quickest method), you can find it in https://murry-liao.github.io/file_code/CCFULL/
 
 # CCFull: Coupled-Channels Fusion Cross Section Calculator
 
@@ -11,13 +11,11 @@ A Fortran program for calculating fusion cross sections using various nuclear re
 
 CCFull computes fusion cross sections as a function of incident energy for heavy-ion nuclear reactions. The program implements five different theoretical approaches:
 
-1. **Numerov (Direct) Calculation** 
+1. **Modified Numerov (Direct) Calculation** 
 2. **Discrete basis Method (DBM)**
 3. **Modified Discrete basis Method (MDBM)** 
 4. **R-matrix Theory** 
 5. **Standard Numerov Calculation**
-
-Methods 1 and 5 integrate the same coupled equations with different Numerov steps. Method 1 uses the modified step of the original CCFULL. Method 5 uses the standard step, xi(n+1) = [12 (1 - T(n))^(-1) - 10] xi(n) - xi(n-1), with xi = (1 - T) u and T = dr^2 (2 mu / hbar^2) (V - E) / 12; the modified step truncates (1 - T)^(-1) after T^2. Method 5 also stabilizes the solutions at the barrier and every 0.5 fm, method 1 at the barrier only.
 
 ## Features
 
@@ -39,7 +37,7 @@ Methods 1 and 5 integrate the same coupled equations with different Numerov step
 - initialization.f90 # Initialization module
 - Interaction.f90 # Nuclear interaction potentials
 - CoulombWave.f90 # Coulomb wave functions
-- Numerov.f90 # Numerov integration method
+- Numerov.f90 # Modified Numerov integration method
 - StandardNumerov.f90 # Numerov integration method with the standard step
 - DiscreteBasis.f90 # Discrete basis
 - ModifiedDiscreteBasis.f90 # Modified Discrete basis
