@@ -84,7 +84,7 @@ Program CCFull_Main
                        'SNum Sigma =', sigma_5, ' mb  '
                  
         write(20,'(F15.5,5E15.5,5F15.5,5E15.5)') E, sigma_1, sigma_2, sigma_3, sigma_4, sigma_5, &
-                        spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_5/sigma_5, &
+                        spin_1/sigma_1, spin_2/sigma_2, spin_3/sigma_3, spin_4/sigma_4, spin_5/sigma_5, &
                         P0_1, P0_2, P0_3, P0_4, P0_5
      
           
@@ -95,7 +95,7 @@ Program CCFull_Main
                        'SNum Sigma =', sigma_5, ' mb  '
                  
         write(20,'(F15.5,5F15.5,5F15.5,5E15.5)') E, sigma_1, sigma_2, sigma_3, sigma_4, sigma_5, &
-                        spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_5/sigma_5, &
+                        spin_1/sigma_1, spin_2/sigma_2, spin_3/sigma_3, spin_4/sigma_4, spin_5/sigma_5, &
                         P0_1, P0_2, P0_3, P0_4, P0_5
     end if
 
