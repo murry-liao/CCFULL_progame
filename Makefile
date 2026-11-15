@@ -4,8 +4,8 @@ FFLAGS = -fcheck=all -g
 LDFLAGS = -llapack -lblas
 
 # link object file and output the program program_main
-runccfull: Main.o initialization.o Interaction.o CoulombWave.o Numerov.o DiscreteBasis.o ModifiedDiscreteBasis.o Rmatrix.o
-	$(FC) $(FFLAGS) -o runccfull Main.o initialization.o Interaction.o CoulombWave.o Numerov.o DiscreteBasis.o ModifiedDiscreteBasis.o Rmatrix.o $(LDFLAGS)
+runccfull: Main.o initialization.o Interaction.o CoulombWave.o Numerov.o StandardNumerov.o DiscreteBasis.o ModifiedDiscreteBasis.o Rmatrix.o
+	$(FC) $(FFLAGS) -o runccfull Main.o initialization.o Interaction.o CoulombWave.o Numerov.o StandardNumerov.o DiscreteBasis.o ModifiedDiscreteBasis.o Rmatrix.o $(LDFLAGS)
 
 Main.o: Main.f90 ccfull_initialization_mod.mod
 	$(FC) $(FFLAGS) -c Main.f90
@@ -21,6 +21,9 @@ CoulombWave.o: CoulombWave.f90
 
 Numerov.o: Numerov.f90
 	$(FC) $(FFLAGS) -c Numerov.f90
+
+StandardNumerov.o: StandardNumerov.f90
+	$(FC) $(FFLAGS) -c StandardNumerov.f90
 
 DiscreteBasis.o: DiscreteBasis.f90
 	$(FC) $(FFLAGS) -c DiscreteBasis.f90

@@ -102,8 +102,9 @@ Contains
 
     Open(10, File='ccfull.inp', Status = 'Unknown')
     Open(20, File='sigma.dat',  Status = 'Unknown')
-    write(20,'(13A15)') 'E',  'sigma_num', 'sigma_dbm', 'sigma_mdbm', 'sigma_rmatrix',  &
-                      '<L>(hbar)',  '<L>(hbar)', '<L>(hbar)', '<L>(hbar)','P (L = 0)', 'P (L = 0)', 'P (L = 0)', 'P (L = 0)'
+    write(20,'(16A15)') 'E',  'sigma_num', 'sigma_dbm', 'sigma_mdbm', 'sigma_rmatrix', 'sigma_snum',  &
+                      '<L>(hbar)',  '<L>(hbar)', '<L>(hbar)', '<L>(hbar)', '<L>(hbar)', &
+                      'P (L = 0)', 'P (L = 0)', 'P (L = 0)', 'P (L = 0)', 'P (L = 0)'
     Open(30, File='Output.dat', Status = 'Unknown')
     Read(10,*)Apro, Zpro, Atar, Ztar
     Read(10,*)R0P, IVIBROTP, R0T, IVIBROTT

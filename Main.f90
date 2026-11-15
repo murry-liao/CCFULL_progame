@@ -12,10 +12,10 @@ Program CCFull_Main
   Integer ::  ie, il
   Integer ::  Iestep
   Real(8) ::  sigma, spin, s0, P_0, P, V
-  Real(8) :: P_1, P_2, P_3, P_4
-  Real(8) :: P0_1, P0_2, P0_3, P0_4
-  Real(8) :: sigma_1 = 0.0D0, sigma_2 = 0.0D0, sigma_3 = 0.0D0, sigma_4 = 0.0D0
-  Real(8) :: spin_1 = 0.0D0, spin_2 = 0.0D0, spin_3 = 0.0D0, spin_4 = 0.0D0
+  Real(8) :: P_1, P_2, P_3, P_4, P_5
+  Real(8) :: P0_1, P0_2, P0_3, P0_4, P0_5
+  Real(8) :: sigma_1 = 0.0D0, sigma_2 = 0.0D0, sigma_3 = 0.0D0, sigma_4 = 0.0D0, sigma_5 = 0.0D0
+  Real(8) :: spin_1 = 0.0D0, spin_2 = 0.0D0, spin_3 = 0.0D0, spin_4 = 0.0D0, spin_5 = 0.0D0
 
   external V
   Call Initialize_CCFull()
@@ -28,8 +28,8 @@ Program CCFull_Main
     spin  = 0.
     P_0 = 0.
 
-    sigma_1 = 0.0D0; sigma_2 = 0.0D0; sigma_3 = 0.0D0; sigma_4 = 0.0D0
-    spin_1 = 0.0D0; spin_2 = 0.0D0; spin_3 = 0.0D0; spin_4 = 0.0D0
+    sigma_1 = 0.0D0; sigma_2 = 0.0D0; sigma_3 = 0.0D0; sigma_4 = 0.0D0; sigma_5 = 0.0D0
+    spin_1 = 0.0D0; spin_2 = 0.0D0; spin_3 = 0.0D0; spin_4 = 0.0D0; spin_5 = 0.0D0
 
     Do il = 0, 200
       L_i = il
@@ -43,6 +43,7 @@ Program CCFull_Main
       End If
 
       Call Numerov(P_1)
+      Call StandardNumerov(P_5)
       Call DiscreteBasis(P_2)
       Call ModifiedDiscreteBasis(P_3)
       Call S_matrix(P_4)
@@ -51,11 +52,13 @@ Program CCFull_Main
       sigma_2 = sigma_2 + (2.0D0 * L_i + 1.0D0) * P_2 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0
       sigma_3 = sigma_3 + (2.0D0 * L_i + 1.0D0) * P_3 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0
       sigma_4 = sigma_4 + (2.0D0 * L_i + 1.0D0) * P_4 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0
+      sigma_5 = sigma_5 + (2.0D0 * L_i + 1.0D0) * P_5 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0
 
       spin_1 = spin_1 + (2.0D0 * L_i + 1.0D0) * P_1 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0 * L_i
       spin_2 = spin_2 + (2.0D0 * L_i + 1.0D0) * P_2 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0 * L_i
       spin_3 = spin_3 + (2.0D0 * L_i + 1.0D0) * P_3 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0 * L_i
       spin_4 = spin_4 + (2.0D0 * L_i + 1.0D0) * P_4 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0 * L_i
+      spin_5 = spin_5 + (2.0D0 * L_i + 1.0D0) * P_5 * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0 * L_i
 
       !sigma = sigma + (2.0D0 * L_i + 1.0D0) * P * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0
       !spin  = spin  + (2.0D0 * L_i + 1.0D0) * P * pi * Hbar**2 / (2.0D0 * ReduceMass * E) * 10.0D0 * L_i
@@ -64,6 +67,7 @@ Program CCFull_Main
       If(L_i == 0)Then
         P0_1 = P_1; P0_2 = P_2
         P0_3 = P_3; P0_4 = P_4
+        P0_5 = P_5
       End If
       If(sigma_1 - s0 < s0*1.d-4)Exit 
 
@@ -74,23 +78,25 @@ Program CCFull_Main
 
     ! output the fusion cross section as a function of energy
     If (sigma_1 < 0.01D0)then
-        write(*,'(A,F8.3,A,4(A,E15.5,A))') ' E = ', E, ' MeV,  ', &
+        write(*,'(A,F8.3,A,5(A,E15.5,A))') ' E = ', E, ' MeV,  ', &
                        'Num Sigma =', sigma_1, ' mb  ', 'Dbm Sigma =', sigma_2, ' mb  ', &
-                       'Mdbm Sigma =', sigma_3, ' mb  ', 'Rmatrix Sigma =', sigma_4, ' mb  '
+                       'Mdbm Sigma =', sigma_3, ' mb  ', 'Rmatrix Sigma =', sigma_4, ' mb  ', &
+                       'SNum Sigma =', sigma_5, ' mb  '
                  
-        write(20,'(F15.5,4E15.5,4F15.5,4E15.5)') E, sigma_1, sigma_2, sigma_3, sigma_4, &
-                        spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, &
-                        P0_1, P0_2, P0_3, P0_4
+        write(20,'(F15.5,5E15.5,5F15.5,5E15.5)') E, sigma_1, sigma_2, sigma_3, sigma_4, sigma_5, &
+                        spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_5/sigma_5, &
+                        P0_1, P0_2, P0_3, P0_4, P0_5
      
           
     else
-        write(*,'(A,F8.3,A,4(A,F15.5,A))') ' E = ', E, ' MeV,  ', &
+        write(*,'(A,F8.3,A,5(A,F15.5,A))') ' E = ', E, ' MeV,  ', &
                        'Num Sigma =', sigma_1, ' mb  ', 'Dbm Sigma =', sigma_2, ' mb  ', &
-                       'Mdbm Sigma =', sigma_3, ' mb  ', 'Rmatrix Sigma =', sigma_4, ' mb  '
+                       'Mdbm Sigma =', sigma_3, ' mb  ', 'Rmatrix Sigma =', sigma_4, ' mb  ', &
+                       'SNum Sigma =', sigma_5, ' mb  '
                  
-        write(20,'(F15.5,4F15.5,4F15.5,4E15.5)') E, sigma_1, sigma_2, sigma_3, sigma_4, &
-                        spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, &
-                        P0_1, P0_2, P0_3, P0_4
+        write(20,'(F15.5,5F15.5,5F15.5,5E15.5)') E, sigma_1, sigma_2, sigma_3, sigma_4, sigma_5, &
+                        spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_1/sigma_1, spin_5/sigma_5, &
+                        P0_1, P0_2, P0_3, P0_4, P0_5
     end if
 
 
